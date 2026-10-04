@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Win-HUD Datenschutz</title>
+  <meta name="description" content="Datenschutzerklärung für Win-HUD, insbesondere zur Nutzung von Google Kalender.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.png" alt="">
+    <h1>Datenschutzerklärung</h1>
+  </header>
+  <p class="muted">Win-HUD · Stand: 4. Oktober 2026 · <a href="#english">English summary below</a></p>
+
+  <h2>Kurzfassung</h2>
+  <p>Win-HUD ist ein Programm, das ausschließlich auf deinem Windows-PC läuft. Der Entwickler betreibt keinen Server, erhebt keine Nutzungsstatistik und bekommt keine deiner Daten zu sehen. Alles, was Win-HUD liest, bleibt auf deinem PC und wird nur dort angezeigt.</p>
+
+  <h2>Verantwortlich</h2>
+  <p>Marcel Huelsbeck<br>
+  E-Mail: <a href="mailto:haloboy32123@gmail.com">haloboy32123@gmail.com</a></p>
+
+  <h2>Google Kalender</h2>
+  <p>Wenn du in den Einstellungen „Mit Google verbinden“ wählst, fragt Win-HUD über Googles Anmeldeseite nach folgenden Berechtigungen:</p>
+  <div class="table">
+  <table>
+    <tr><th>Berechtigung</th><th>Wofür</th></tr>
+    <tr><td><code>calendar.readonly</code></td><td>Deine Kalender und Termine lesen, um die nächsten Termine im Widget anzuzeigen und kurz vorher zu erinnern. Win-HUD kann nichts anlegen, ändern oder löschen.</td></tr>
+    <tr><td><code>openid</code>, <code>email</code></td><td>Die Adresse des verbundenen Kontos, damit die Einstellungen anzeigen, welches Konto verbunden ist.</td></tr>
+  </table>
+  </div>
+
+  <h3>Was gespeichert wird</h3>
+  <ul>
+    <li>Der dauerhafte Zugangsschlüssel von Google (Refresh-Token) und das Client-Secret – <b>verschlüsselt</b> mit der Windows-Datenschutz-API (DPAPI), also nur für dein Windows-Benutzerkonto lesbar.</li>
+    <li>Die Adresse des verbundenen Kontos sowie Kennung und Namen deiner Kalender, damit du in den Einstellungen auswählen kannst, welche angezeigt werden.</li>
+  </ul>
+  <p>Alles liegt in der Datei <code>%APPDATA%\WinHud\settings.json</code> auf deinem PC. Termine selbst werden nicht gespeichert: Win-HUD lädt sie alle 15 Minuten neu und hält sie nur im Arbeitsspeicher.</p>
+
+  <h3>Was nicht passiert</h3>
+  <ul>
+    <li>Kalenderdaten werden an niemanden weitergegeben – weder an den Entwickler noch an Dritte. Die Verbindung besteht nur zwischen deinem PC und Google.</li>
+    <li>Keine Werbung, kein Verkauf, keine Auswertung, kein Training von KI-Modellen.</li>
+    <li>Win-HUD liest nur die Zeitspanne, die im Widget angezeigt wird (einstellbar, standardmäßig 7 Tage).</li>
+  </ul>
+  <p>Die Nutzung und Weitergabe von Informationen, die Win-HUD von Google-APIs erhält, entspricht der <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, einschließlich der Anforderungen zur eingeschränkten Nutzung („Limited Use“).</p>
+
+  <h3>Zugriff widerrufen und löschen</h3>
+  <ul>
+    <li>In Win-HUD unter Plugin-Einstellungen › Kalender auf „Trennen“ klicken – damit werden Zugangsschlüssel, Kontoadresse und Kalendernamen aus den Einstellungen entfernt.</li>
+    <li>Den Zugriff bei Google selbst entziehen: <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+    <li>Wer Win-HUD deinstalliert und den Ordner <code>%APPDATA%\WinHud</code> löscht, entfernt alle gespeicherten Daten.</li>
+  </ul>
+
+  <h2>Andere Funktionen</h2>
+  <p>Weitere Plugins verbinden sich nur mit Diensten, die du selbst einträgst oder einschaltest:</p>
+  <div class="table">
+  <table>
+    <tr><th>Funktion</th><th>Verbindung</th></tr>
+    <tr><td>Updates</td><td>GitHub (github.com, api.github.com), um neue Versionen von Win-HUD und den Plugins zu finden und herunterzuladen.</td></tr>
+    <tr><td>Wetter</td><td>Open-Meteo (api.open-meteo.com) mit dem eingestellten Ort bzw. dessen Koordinaten.</td></tr>
+    <tr><td>Kalender per iCal-Link</td><td>Die Adresse, die du einträgst.</td></tr>
+    <tr><td>Home Assistant, Dienst-Checks</td><td>Die Server, die du einträgst (meist im eigenen Netz).</td></tr>
+    <tr><td>Handy</td><td>Dein Handy über KDE Connect im lokalen Netz.</td></tr>
+    <tr><td>Ungelesen, eM Client, Akku, System, Medien, Audio</td><td>Keine – sie lesen nur Daten auf deinem PC.</td></tr>
+  </table>
+  </div>
+  <p>Für diese Dienste gelten deren eigene Datenschutzerklärungen. Zugangsdaten (z. B. Home-Assistant-Token) werden ebenfalls mit DPAPI verschlüsselt gespeichert. Ein Protokoll für die Fehlersuche liegt lokal in <code>%APPDATA%\WinHud\log.txt</code> und enthält keine Inhalte von Nachrichten, Mails oder Terminen.</p>
+
+  <h2>Änderungen</h2>
+  <p>Ändert sich, welche Daten Win-HUD nutzt, wird diese Seite aktualisiert; das Datum oben zeigt den Stand.</p>
+
+  <h2 id="english">English summary</h2>
+  <p>Win-HUD is a desktop app that runs entirely on your Windows PC. There is no developer server, no account and no telemetry. When you connect Google Calendar, Win-HUD requests read-only access to your calendars (<code>calendar.readonly</code>) to show upcoming events and reminders in its widget, plus your email address (<code>openid</code>, <code>email</code>) to show which account is connected. The refresh token is stored on your PC only, encrypted with Windows DPAPI; events are kept in memory only. Google user data is never transferred to the developer or any third party, never used for advertising and never used to train AI models. Win-HUD's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. You can disconnect in Win-HUD's settings or revoke access at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Contact: <a href="mailto:haloboy32123@gmail.com">haloboy32123@gmail.com</a>.</p>
+
+  <footer>
+    <a href="index.html">Win-HUD</a>
+    <a href="https://github.com/MarcelHue/Win-HUD-releases/releases">Releases</a>
+  </footer>
+</main>
+</body>
+</html>
